@@ -1,5 +1,6 @@
-@media (max-width: 300px) {
-    .min{
-        display: none;
-    }
+div#todo-list div{
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 1000px;
+    margin: 7px;
 }

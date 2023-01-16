@@ -505,6 +505,7 @@ function calculator() {
 }
 */
 //input,select에서 change가 발생하는데, input의value값을 전역에두고,calculator가밖에잇는거가져다쓰는게좋은건지?
+/*
 let status = false
 let checkBox = document.querySelector("input")
 checkBox.addEventListener('change', (evt) => {
@@ -517,5 +518,32 @@ text.addEventListener('click', (evt) => {
         text.style.color = 'red'
     } else {
         text.style.color = 'blue'
+    }
+})
+*/
+//toddo list 
+const taskInput = document.querySelector("#todo")
+const addButton = document.querySelector("#add-button")
+let toDoList = document.querySelector("#todo-list")
+taskInput.addEventListener("change", () => {
+    // console.log(taskInput.value)
+    // console.log(typeof(taskInput.value))
+    // if(taskInput.value != "") { //입력받은내용이있을경우
+    //     console.log("undefinde!")
+    //     toDoList.innerHTML += `<div>${taskInput.value}</div>`
+    //     taskInput.value = ""
+    // }
+})
+document.addEventListener("keydown", (evt) => {
+    // console.log(evt.key)
+    if(evt.key == "Enter") {
+        addButton.click()
+    }
+})
+addButton.addEventListener("click", () => {
+    if(taskInput.value != "") { //입력받은내용이있을경우
+        console.log("undefinde!")
+        toDoList.innerHTML += `<div>${taskInput.value}</div>`
+        taskInput.value = ""
     }
 })
