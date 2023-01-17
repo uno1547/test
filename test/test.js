@@ -522,9 +522,13 @@ text.addEventListener('click', (evt) => {
 })
 */
 //toddo list 
+
 const taskInput = document.querySelector("#todo")
 const addButton = document.querySelector("#add-button")
+const resetButton = document.querySelector("#reset")
 let toDoList = document.querySelector("#todo-list")
+let taskNum = 0
+// localStorage.clear()
 taskInput.addEventListener("change", () => {
     // console.log(taskInput.value)
     // console.log(typeof(taskInput.value))
@@ -534,16 +538,35 @@ taskInput.addEventListener("change", () => {
     //     taskInput.value = ""
     // }
 })
-document.addEventListener("keydown", (evt) => {
+document.addEventListener("keydown", (evt) => { //엔터키 클릭이벤트로 인식
     // console.log(evt.key)
     if(evt.key == "Enter") {
         addButton.click()
     }
 })
 addButton.addEventListener("click", () => {
-    if(taskInput.value != "") { //입력받은내용이있을경우
-        console.log("undefinde!")
-        toDoList.innerHTML += `<div>${taskInput.value}</div>`
+    if(taskInput.value != "") { //입력받은내용이있을경우 스토리지 저장후 innerhtml? 로html생성 
+        taskNum += 1
+        console.log(taskNum)
+        localStorage.setItem(`${taskNum}`, `${taskInput.value}`)
+        console.log(localStorage)
+        toDoList.innerHTML += `<div>${localStorage.getItem(`${taskNum}`)}</div>`
         taskInput.value = ""
     }
 })
+resetButton.addEventListener("click", () => {
+    localStorage.clear()
+})
+/*
+let arr = []
+arr.push("1",2,3)
+let ob = {}
+ob.name = "hi"
+console.log(ob,arr)
+const add = document.querySelector("#add-button")
+// add.addEventListener("click", () => {
+//     ob[`name${}`] = 
+// })
+localStorage.setItem("first-task", "homework")
+document.querySelector
+*/
