@@ -522,7 +522,7 @@ text.addEventListener('click', (evt) => {
 })
 */
 //toddo list 
-
+/*
 const taskInput = document.querySelector("#todo")
 const addButton = document.querySelector("#add-button")
 const resetButton = document.querySelector("#reset")
@@ -557,6 +557,7 @@ addButton.addEventListener("click", () => {
 resetButton.addEventListener("click", () => {
     localStorage.clear()
 })
+*/
 /*
 let arr = []
 arr.push("1",2,3)
@@ -570,3 +571,145 @@ const add = document.querySelector("#add-button")
 localStorage.setItem("first-task", "homework")
 document.querySelector
 */
+/*
+const input = document.querySelector("#todo")
+const toDoList = document.querySelector("#todo-list")
+const addButton = document.querySelector("#add-button")
+let keyCount = 0
+const addTodo = () => {
+    if (input.ariaValueMax.trim === '') {
+        alert('입력해주세요')
+        return
+    }
+
+    const item = document.createElement('div') //item이라는이름으로div문서객체생성
+    const checkbox = document.createElement('input') //checkbox라는이름으로input태그생성
+    const text = document.createElement('span')
+    const button = document.createElement('button')
+
+    const key = keyCount //문서객체 식별용 키
+    keyCount += 1
+
+    item.setAttribute('data-key', key) // <div data-key = 'key'>형식으로만듬
+    item.appendChild(checkbox)
+}
+try { //try구문내에서 예외발생시 catch(exception),finally는 무조건 실행 
+    console.log('try구문입니다')
+    const array = ['사과','바나나','귤']
+    array.forEach(() => {
+        throw '예외강제발생'
+    })
+} catch(e) {
+    console.log('catch구문입니다')
+} finally {
+    console.log('finally구문입니다')
+}
+const zuhwi = {name:'zuhwi', 'age':25,
+    eat : function(){
+    console.log(this,'익명함수메소드')
+    },
+    eat () {
+        console.log('간단메소드')
+    } //같은이름이면 선언한메소드가 적용됨
+}
+console.log(zuhwi.name) //zuhwi
+console.log(zuhwi.age) //25
+console.log(zuhwi['name']) //zuhwi
+console.log(zuhwi['age']) //25
+console.log(zuhwi['age']) //25
+zuhwi.eat()
+//속성추가하기
+zuhwi.tall = 153
+console.log(zuhwi['tall'])
+zuhwi['address'] = '청덕'
+console.log(zuhwi.address)
+//메소드추가하기
+zuhwi.run = function(){
+    console.log('추가된메소드',)
+    console.log(this)
+}
+zuhwi.run()
+*/
+
+//클래스만들기
+//1.객체생성함수
+/*
+function createStudent(name,tall,address) {
+    return {name : name, tall : tall, address : address 
+    ,eat : function(){
+        console.log(this, this.eat)
+        console.log('eating')
+    } 
+    ,study() {
+        console.log(this, this.study)
+        console.log('studying')
+    }
+    }
+}
+
+let zuhwi = createStudent('zuhwi',153,'청덕')
+let yuno = createStudent('yuno',170, '상현')
+console.log(zuhwi,yuno)
+*/
+//2.클래스 생성
+/*
+class Student {
+    constructor(name, tall, address) {
+        this.name = name
+        this.tall = tall
+        this.address = address
+    }
+    getName () { //인스턴스생성시 메소드는 안보임 근데 호출은 가능
+        console.log(this, this.name)
+        console.log('클래스에서 생성된 메소드')
+    }
+    // getAge : function() { 이렇게는 메소드 생성하면 안되나봄
+    //     console.log(this.tall)
+    // }
+}
+let zuhwi = new Student('zuhwi') //지정안한 속성은 undefined로출력
+console.log(zuhwi)
+zuhwi.getName()
+console.log(new Student('zuhwi', 153, '청덕'))
+*/
+/*
+class Student {
+    #age
+    constructor(age) {
+        this.#age = age // #age속성추가
+        console.log(this)
+    } 
+    getAge () {
+        console.log(this.#age)
+    }
+}
+let peter = new Student(19) // 19
+// this.age = 20
+// console.log(this.age) //여기서 this는 window객체기때문에 student의age와는상관없이 20출력
+// console.log(peter.#age) //클래스 바깥에서 객체의 age속성확인불가
+peter.age = 12345
+// peter.#age = 20 //클래스 바깥이라 #age속성 변경불가
+peter.getAge()
+console.log(peter.age) //이 age는 전혀 별개의 속성
+console.log(peter) //여전히 메소드는 출력이 안됌 왜지
+console.log(peter.getAge)//여기서는 메소드 볼수있는데 왜 위에 peter에는 안뜸?
+*/
+class Student {
+    #age
+    constructor (age) {
+        this.ags = 5 // ?  //constructor호출시에 인수로 들어온 age가 ags(age)로 동작하는듯하다
+        console.log(this)
+        console.log(this.ags)
+    }
+    set ags (age) { //consturctor내의this.ags 로 호출
+        console.log('this is setter')
+        console.log (age)
+        this.#age = age
+    }
+}
+let peter = new Student(23) //새로운인스턴스생성과동시에
+console.log(peter)
+console.log(peter.age)
+
+
+
